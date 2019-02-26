@@ -1,2 +1,5 @@
-export const GET_PRESIDENTS = 'GET_PRESIDENTS' 
+export const FETCH_PRESIDENTS = 'FETCH_PRESIDENTS' 
 export const SET_PRESIDENTS = 'SET_PRESIDENTS' 
+
+export const IS_LOADING = 'IS_LOADING'
+export const HAS_ERRORED = 'HAS_ERRORED'

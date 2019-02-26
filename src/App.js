@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
-import './App.css';
-import { getPresidents } from './api'
+import React, { useEffect } from 'react'
+import './App.css'
 import PresidentsArea from './PresidentsArea'
-class App extends Component {
-  state = {
-    presidents: ''
-  }
+import * as actions from './actions'
+import { connect } from 'react-redux'
 
-  async componentDidMount() {
-    
-  }
-  render() {
-
-    return (
-      <div className="App">
-        <PresidentsArea presidents={this.state.presidents}/>
-      </div>
-    );
-  }
+const App = ({ fetchPresidents }) => {
+  useEffect(fetchPresidents, [])
+  return (
+    <div className="App">
+      <PresidentsArea />
+    </div>
+  )
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  fetchPresidents: () => dispatch(actions.fetchPresident()),
+})
+export default connect(
+  null,
+  mapDispatchToProps,
+)(App)
