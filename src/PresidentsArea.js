@@ -13,7 +13,7 @@ const styles = {
   },
   loading: { margin: '0 auto' },
 }
-export const PresidentsArea = ({ presidents, isLoading, hasErrored }) => {
+export const PresidentsArea = ({ presidents, hasErrored }) => {
   if (hasErrored) {
     return <h1 className="error" style={{ margin: '0 auto' }}>There is an error...</h1>
   } else if (presidents) {
