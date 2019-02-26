@@ -1,6 +1,10 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
   card: {
     margin: 120,
     background: 'lightgrey',
@@ -13,7 +17,7 @@ const PresidentsArea = ({ presidents, isLoading, hasErrored }) => {
     return <h1 style={{ margin: '0 auto' }}>There is an error...</h1>
   } else if (presidents) {
     return (
-      <div>
+      <div style={styles.root}>
         {presidents.map(president => (
           <Fragment>
             <div style={styles.card}>

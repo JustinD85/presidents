@@ -1,9 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import { shallow } from 'enzyme'
+import { App } from './App'
+import { mapDispatchToProps } from './App'
+import * as actions from './actions'
+describe('App', () => {
+  let wrapper
+  window.fetch = jest.fn()
+  beforeEach(() => {
+    wrapper = shallow(<App />)
+  })
+  it('should render without error', () => {
+    expect(wrapper).toMatchSnapshot()
+  })
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+  describe('mapDispatchToProps', () => {
+    const mockDispatch = jest.fn()
+    let expectation = actions.fetchPresident()
+    let props = mapDispatchToProps(mockDispatch)
+    props.fetchPresidents()
+    it('should call dispatch with correct params', () => {
+      expect(mockDispatch).toHaveBeenCalledWith(expectation)
+    })
+  })
+})
