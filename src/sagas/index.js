@@ -1,13 +1,13 @@
 
 
 function* grabPresidents (){
-  const result = await getPresidents()
+  // const result = await getPresidents()
 
-    this.setState({
-      presidents:result
-    })
+  //   this.setState({
+  //     presidents:result
+  //   })
 }
 
-export function* listener(){
-  yield takeLatest('')
+export default function* listener(){
+  // yield takeLatest('')
 }
