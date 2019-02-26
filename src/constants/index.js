@@ -1,0 +1,2 @@
+export const GET_PRESIDENTS = 'GET_PRESIDENTS' 
+export const SET_PRESIDENTS = 'SET_PRESIDENTS' 
