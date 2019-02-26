@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 const styles = {
   root: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   card: {
     margin: 120,
@@ -11,16 +11,17 @@ const styles = {
     padding: 10,
     borderRadius: 10,
   },
+  loading: { margin: '0 auto' },
 }
-const PresidentsArea = ({ presidents, isLoading, hasErrored }) => {
+export const PresidentsArea = ({ presidents, isLoading, hasErrored }) => {
   if (hasErrored) {
-    return <h1 style={{ margin: '0 auto' }}>There is an error...</h1>
+    return <h1 className="error" style={{ margin: '0 auto' }}>There is an error...</h1>
   } else if (presidents) {
     return (
-      <div style={styles.root}>
+      <div className="presidents" style={styles.root}>
         {presidents.map(president => (
-          <Fragment>
-            <div style={styles.card}>
+          <Fragment key={president.toString + 'key'}>
+            <div style={styles.card} key={president.toString()}>
               <p>Order: {president.number}</p>
               <p>Name: {president.president}</p>
               <p>Birth: {president.birth_year}</p>
@@ -34,7 +35,11 @@ const PresidentsArea = ({ presidents, isLoading, hasErrored }) => {
       </div>
     )
   } else {
-    return <h1 style={{ margin: '0 auto' }}>Loading please wait...</h1>
+    return (
+      <h1 className="loading" style={styles.loading}>
+        Loading please wait...
+      </h1>
+    )
   }
 }
 
